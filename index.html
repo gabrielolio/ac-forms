@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auto Clean — Brand Brief</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f4f8;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0a1628 0%, #1a3a6b 100%);
+      color: white;
+      padding: 40px 24px 32px;
+      text-align: center;
+      border-bottom: 4px solid #2c7be5;
+    }
+
+    header .logo-text {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    header .logo-text span {
+      color: #2c7be5;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 1rem;
+      color: #a0b4cc;
+      font-weight: 400;
+    }
+
+    header .instrucao {
+      margin-top: 20px;
+      background: rgba(44, 123, 229, 0.15);
+      border: 1px solid rgba(44, 123, 229, 0.4);
+      border-radius: 8px;
+      padding: 14px 20px;
+      font-size: 0.9rem;
+      color: #c8d8ee;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px 60px;
+    }
+
+    .bloco {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      overflow: hidden;
+    }
+
+    .bloco-header {
+      background: linear-gradient(90deg, #0a1628, #1a3a6b);
+      color: white;
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .bloco-numero {
+      background: #2c7be5;
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .bloco-titulo {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .bloco-body {
+      padding: 24px 28px;
+    }
+
+    .pergunta {
+      margin-bottom: 28px;
+    }
+
+    .pergunta:last-child {
+      margin-bottom: 0;
+    }
+
+    .pergunta label {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .pergunta label .num {
+      color: #2c7be5;
+      margin-right: 4px;
+    }
+
+    .pergunta textarea {
+      width: 100%;
+      border: 1.5px solid #d0dce8;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: #1a1a2e;
+      background: #f8fafc;
+      resize: vertical;
+      min-height: 80px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      line-height: 1.5;
+    }
+
+    .pergunta textarea:focus {
+      outline: none;
+      border-color: #2c7be5;
+      box-shadow: 0 0 0 3px rgba(44, 123, 229, 0.12);
+      background: white;
+    }
+
+    .pergunta textarea.tall {
+      min-height: 120px;
+    }
+
+    .barra-progresso-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #0a1628;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .barra-progresso-bg {
+      flex: 1;
+      height: 6px;
+      background: #1a3a6b;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .barra-progresso-fill {
+      height: 100%;
+      background: #2c7be5;
+      border-radius: 3px;
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+
+    .progresso-texto {
+      color: #a0b4cc;
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+
+    .btn-wrap {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .btn-copiar {
+      background: linear-gradient(135deg, #2c7be5, #1a5cbc);
+      color: white;
+      border: none;
+      padding: 16px 40px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 14px rgba(44, 123, 229, 0.3);
+    }
+
+    .btn-copiar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(44, 123, 229, 0.4);
+    }
+
+    .btn-copiar:active {
+      transform: translateY(0);
+    }
+
+    .aviso-copiado {
+      display: none;
+      margin-top: 12px;
+      color: #2c7be5;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #888;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 600px) {
+      .bloco-body { padding: 18px 16px; }
+      header .logo-text { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-text">Auto <span>Clean</span></div>
+  <p>Questionário de Identidade de Marca — Brand Brief</p>
+  <div class="instrucao">
+    Responda com calma e honestidade. Não existe resposta certa ou errada.<br>
+    Quanto mais detalhe você der, melhor o resultado final da marca.
+  </div>
+</header>
+
+<div class="barra-progresso-wrap">
+  <div class="barra-progresso-bg">
+    <div class="barra-progresso-fill" id="progressBar"></div>
+  </div>
+  <div class="progresso-texto" id="progressText">0 / 70 respondidas</div>
+</div>
+
+<div class="container">
+
+  <!-- BLOCO 1 -->
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-numero">1</div>
+      <div class="bloco-titulo">A Empresa</div>
+    </div>
+    <div class="bloco-body">
+      <div class="pergunta">
+        <label><span class="num">1.1</span> Qual é o nome completo da empresa? Existe algum subtítulo ou complemento (ex: "Auto Clean — Duchas e Lavagem")?</label>
+        <textarea placeholder="Ex: Auto Clean Duchas e Lavagem Premium..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">1.2</span> Quando a empresa foi fundada? Como ela surgiu — foi uma ideia sua, uma oportunidade de mercado, herança, outra coisa?</label>
+        <textarea class="tall" placeholder="Conte a história de origem..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">1.3</span> Onde a empresa opera? (cidade, bairro, região — seja específico)</label>
+        <textarea placeholder="Ex: Zona Norte de Campo Grande, MS..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">1.4</span> A empresa tem ponto físico, atende a domicílio, ou os dois? Descreva como funciona o atendimento na prática.</label>
+        <textarea class="tall" placeholder="Descreva o fluxo de atendimento..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">1.5</span> Quais são os serviços oferecidos hoje? Liste todos, mesmo os que ainda não divulga muito.</label>
+        <textarea class="tall" placeholder="Liste todos os serviços..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">1.6</span> Qual serviço gera mais receita hoje?</label>
+        <textarea placeholder="Ex: Ducha simples, lavagem completa..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">1.7</span> Qual serviço você mais gosta de oferecer ou acredita ter mais potencial?</label>
+        <textarea placeholder="E por quê?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">1.8</span> Existe algum serviço que você quer parar de oferecer ou que está defasado?</label>
+        <textarea placeholder="Se sim, qual e por quê?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">1.9</span> A empresa tem CNPJ, nome fantasia registrado, ou ainda é informal?</label>
+        <textarea placeholder="Ex: MEI registrado, nome fantasia em processo..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">1.10</span> Quantas pessoas trabalham hoje (incluindo você)?</label>
+        <textarea placeholder="Ex: 2 pessoas — eu e o Guilherme"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 2 -->
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-numero">2</div>
+      <div class="bloco-titulo">O Negócio</div>
+    </div>
+    <div class="bloco-body">
+      <div class="pergunta">
+        <label><span class="num">2.1</span> Como é o modelo de negócio? (por agendamento, por demanda, mensalidade, avulso, pacote — descreva)</label>
+        <textarea class="tall" placeholder="Descreva como o cliente contrata e paga..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">2.2</span> Qual é o ticket médio por cliente/atendimento?</label>
+        <textarea placeholder="Ex: R$ 80 por visita, R$ 150 para pacote mensal..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">2.3</span> Com que frequência um cliente típico usa o serviço? (diário, semanal, mensal, esporádico)</label>
+        <textarea placeholder="Ex: A maioria agendas 1x por semana..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">2.4</span> Qual é o volume atual de clientes ativos?</label>
+        <textarea placeholder="Ex: ~30 clientes fixos, outros avulsos..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">2.5</span> Como os clientes chegam até você hoje? (indicação, panfleto, redes sociais, Google, passagem na rua — ordene por importância)</label>
+        <textarea class="tall" placeholder="1. Indicação de amigos\n2. Instagram\n3. ..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">2.6</span> Qual é a maior dificuldade operacional do negócio hoje?</label>
+        <textarea class="tall" placeholder="Ex: logística de deslocamento, falta de equipamento, agendamento..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">2.7</span> Qual é a maior dificuldade comercial? (captar clientes, fidelizar, precificar)</label>
+        <textarea class="tall" placeholder="Ex: difícil convencer o cliente a pagar o preço justo..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">2.8</span> Você tem metas de crescimento? (ex: dobrar faturamento em 12 meses, abrir uma unidade, contratar mais pessoas)</label>
+        <textarea class="tall" placeholder="Descreva suas metas para os próximos 12 meses..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">2.9</span> A empresa já teve alguma identidade visual antes? (logo, cores, cartão, uniforme) Se sim, o que existe hoje e o que você acha dela?</label>
+        <textarea class="tall" placeholder="Descreva o que existe e sua opinião honesta..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">2.10</span> Por que você quer fazer o rebrand agora? O que motivou essa decisão?</label>
+        <textarea class="tall" placeholder="Seja honesto — crescimento, imagem, concorrência, nova fase?"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 3 -->
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-numero">3</div>
+      <div class="bloco-titulo">O Público</div>
+    </div>
+    <div class="bloco-body">
+      <div class="pergunta">
+        <label><span class="num">3.1</span> Quem é o seu cliente ideal? Descreva como se fosse uma pessoa real: idade, sexo, onde mora, o que faz, como se comporta.</label>
+        <textarea class="tall" placeholder="Ex: Homem, 35-50 anos, mora em bairro de classe média..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">3.2</span> Quem é o cliente que você mais gosta de atender? Por quê?</label>
+        <textarea class="tall" placeholder="Pense em um cliente real que você gosta de receber..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">3.3</span> Quem é o cliente que você menos quer atender? Por quê?</label>
+        <textarea class="tall" placeholder="Seja honesto — que tipo de cliente não vale a pena?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">3.4</span> O seu cliente decide sozinho, ou alguém influencia essa decisão? (ex: a esposa indica, o filho pesquisa no celular)</label>
+        <textarea placeholder="Descreva o processo de decisão do cliente..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">3.5</span> O que o cliente mais valoriza no seu serviço hoje? O que ele elogia com mais frequência?</label>
+        <textarea class="tall" placeholder="O que os clientes mais falam que gostam?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">3.6</span> O que o cliente reclama ou sente falta? (mesmo que você ache que não é culpa sua)</label>
+        <textarea class="tall" placeholder="Seja honesto — o que costuma gerar insatisfação?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">3.7</span> Qual é a principal objeção que faz um cliente potencial não fechar com você?</label>
+        <textarea placeholder="Ex: preço alto, desconfiança, não conhece a marca..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">3.8</span> Como o seu cliente se sente ANTES de usar o serviço? (com raiva, com pressa, descuidado, outro)</label>
+        <textarea placeholder="Que problema ou sentimento leva ele a te procurar?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">3.9</span> Como o seu cliente se sente DEPOIS de usar o serviço? O que você quer que ele sinta?</label>
+        <textarea placeholder="Ex: aliviado, satisfeito, orgulhoso, tranquilo..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">3.10</span> Seu cliente usa redes sociais? Quais? Ele pesquisa serviços no Google ou prefere perguntar para conhecidos?</label>
+        <textarea placeholder="Como seu cliente típico descobre novos serviços?"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 4 -->
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-numero">4</div>
+      <div class="bloco-titulo">A Concorrência</div>
+    </div>
+    <div class="bloco-body">
+      <div class="pergunta">
+        <label><span class="num">4.1</span> Quem são seus principais concorrentes diretos? Liste os que você mais respeita ou teme (nome, localização se souber).</label>
+        <textarea class="tall" placeholder="Liste os concorrentes que você conhece..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">4.2</span> O que esses concorrentes fazem BEM que você ainda não faz?</label>
+        <textarea class="tall" placeholder="Seja honesto — o que eles fazem melhor?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">4.3</span> O que eles fazem MAL ou deixam a desejar?</label>
+        <textarea class="tall" placeholder="Onde você vê brechas que pode explorar?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">4.4</span> Como você se diferencia deles hoje? O que faz de você uma escolha melhor?</label>
+        <textarea class="tall" placeholder="Qual é o seu diferencial real hoje?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">4.5</span> Existe alguma empresa fora do seu setor que você admira e gostaria de se inspirar? (pode ser qualquer empresa, de qualquer setor)</label>
+        <textarea placeholder="Ex: a Apple pela simplicidade, iFood pela praticidade..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">4.6</span> Se um cliente escolhe um concorrente em vez de você, qual é a razão mais comum?</label>
+        <textarea placeholder="Qual é a principal perda de cliente que você vê?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">4.7</span> Tem alguma empresa que você definitivamente NÃO quer parecer? Por quê?</label>
+        <textarea placeholder="Quem você não quer ser?"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 5 -->
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-numero">5</div>
+      <div class="bloco-titulo">A Marca Hoje</div>
+    </div>
+    <div class="bloco-body">
+      <div class="pergunta">
+        <label><span class="num">5.1</span> Se a Auto Clean fosse uma pessoa, como ela seria? (personalidade, jeito de falar, como se veste, como age)</label>
+        <textarea class="tall" placeholder="Imagine essa pessoa com detalhes — quem ela é?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">5.2</span> Escolha 5 adjetivos que descrevem como você QUER que a marca seja percebida.</label>
+        <textarea placeholder="Ex: confiável, moderna, acessível, profissional, cuidadosa"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">5.3</span> Escolha 5 adjetivos que descrevem como você NÃO quer que a marca seja percebida.</label>
+        <textarea placeholder="Ex: amadora, barata, fria, impessoal, desorganizada"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">5.4</span> Como você descreveria a Auto Clean em uma frase para um estranho que nunca ouviu falar?</label>
+        <textarea placeholder="Uma frase clara e direta — como você apresentaria a empresa?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">5.5</span> Existe um propósito maior por trás da empresa além de lucrar? (ex: facilitar a vida das pessoas, cuidar do bem-estar)</label>
+        <textarea class="tall" placeholder="O que a Auto Clean resolve na vida das pessoas além da limpeza?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">5.6</span> Quais são os valores inegociáveis da empresa? O que você nunca abrirá mão, mesmo que custe dinheiro?</label>
+        <textarea class="tall" placeholder="Ex: honestidade com o cliente, qualidade do serviço, pontualidade..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">5.7</span> A marca tem alguma história marcante, um momento difícil superado, uma conquista importante? Conte.</label>
+        <textarea class="tall" placeholder="Histórias reais fortalecem a marca — compartilhe a sua..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">5.8</span> Tem algum cliente, feedback ou situação que define o que a Auto Clean significa para você?</label>
+        <textarea class="tall" placeholder="Um momento que resume o espírito da empresa..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 6 -->
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-numero">6</div>
+      <div class="bloco-titulo">Comunicação</div>
+    </div>
+    <div class="bloco-body">
+      <div class="pergunta">
+        <label><span class="num">6.1</span> Como você se comunica com seus clientes hoje? (WhatsApp, Instagram, panfleto, boca a boca — liste todos)</label>
+        <textarea placeholder="Liste todos os canais que usa atualmente..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">6.2</span> Qual canal funciona melhor hoje para atrair clientes?</label>
+        <textarea placeholder="Onde vem a maioria dos novos clientes?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">6.3</span> Qual canal você usa menos mas acredita que tem potencial?</label>
+        <textarea placeholder="Ex: TikTok, Google Meu Negócio, email..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">6.4</span> Como você quer que a marca fale com o cliente? (formal, informal, descontraído, técnico, amigável, direto)</label>
+        <textarea class="tall" placeholder="Descreva o tom de voz ideal da marca..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">6.5</span> Existe alguma palavra, frase ou expressão que você SEMPRE usa com clientes e que faz parte do jeito da empresa?</label>
+        <textarea placeholder="Ex: 'pode deixar com a gente', 'seu carro em boas mãos'..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">6.6</span> Existe alguma palavra, frase ou expressão que você NUNCA usaria na comunicação da marca?</label>
+        <textarea placeholder="O que soa falso ou que não combina com a Auto Clean?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">6.7</span> A marca vai falar na primeira pessoa? (ex: "A Auto Clean cuida..." vs "A gente cuida..." vs "Nós cuidamos...")</label>
+        <textarea placeholder="Como a marca se refere a si mesma?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">6.8</span> Você prefere comunicação mais emocional (toca o sentimento) ou mais racional (dados, qualidade, eficiência)?</label>
+        <textarea placeholder="Ou uma mistura? Explique sua preferência..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 7 -->
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-numero">7</div>
+      <div class="bloco-titulo">Identidade Visual</div>
+    </div>
+    <div class="bloco-body">
+      <div class="pergunta">
+        <label><span class="num">7.1</span> Existe alguma cor que você associa fortemente à Auto Clean? Por quê?</label>
+        <textarea placeholder="Pode ser por gosto pessoal, referência de mercado, o que quiser..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">7.2</span> Existe alguma cor que você definitivamente NÃO quer na marca? Por quê?</label>
+        <textarea placeholder="Quais cores você quer evitar?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">7.3</span> Pensando em logos e marcas que você gosta (de qualquer setor), quais você citaria como referência visual?</label>
+        <textarea class="tall" placeholder="Ex: Nike, iFood, Nubank — e o que você gosta neles?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">7.4</span> Pensando em logos e marcas que você NÃO gosta, quais você citaria como o que não quer?</label>
+        <textarea class="tall" placeholder="O que você definitivamente quer evitar visualmente?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">7.5</span> Você prefere um visual mais moderno/minimalista ou mais clássico/elaborado?</label>
+        <textarea placeholder="Ou algo no meio? Descreva sua preferência..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">7.6</span> A marca vai precisar funcionar em que tipos de superfície? (placa de rua, camiseta, panfleto, digital, carro, uniforme)</label>
+        <textarea placeholder="Liste todos os materiais onde a marca vai aparecer..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">7.7</span> Existe algum símbolo, ícone ou elemento visual que você acha que representa bem a essência da Auto Clean?</label>
+        <textarea placeholder="Ex: água, carro, brilho, gota, escudo..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">7.8</span> O nome "Auto Clean" vai aparecer escrito por extenso no logo, ou você está aberto a versões abreviadas ou símbolo isolado?</label>
+        <textarea placeholder="Ex: só 'AC', só o símbolo, ou sempre o nome completo?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">7.9</span> A marca vai ter um slogan/tagline? Se já tem ideia, escreva. Se não, o que quer que o slogan transmita?</label>
+        <textarea class="tall" placeholder="Ex: 'Seu carro, nosso cuidado' — ou descreva o sentimento que quer passar..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">7.10</span> Quais informações são obrigatórias nos materiais físicos (placa e panfleto)?</label>
+        <textarea placeholder="Ex: endereço, telefone, WhatsApp, Instagram, lista de serviços, preços..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 8 -->
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-numero">8</div>
+      <div class="bloco-titulo">Visão de Futuro</div>
+    </div>
+    <div class="bloco-body">
+      <div class="pergunta">
+        <label><span class="num">8.1</span> Onde você quer que a Auto Clean esteja daqui a 1 ano?</label>
+        <textarea class="tall" placeholder="Em termos de clientes, faturamento, estrutura, equipe..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">8.2</span> Onde você quer que a Auto Clean esteja daqui a 5 anos?</label>
+        <textarea class="tall" placeholder="Seja ambicioso — onde você sonha que a empresa chegue?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">8.3</span> A Auto Clean vai crescer verticalmente (mais serviços, mais qualidade) ou horizontalmente (novas unidades, franquias)?</label>
+        <textarea placeholder="Ou os dois? Qual é a visão de expansão?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">8.4</span> Existe algum serviço ou linha de negócio que você quer adicionar no futuro e que a marca já deve comportar?</label>
+        <textarea class="tall" placeholder="Ex: produtos de limpeza próprios, treinamento de equipe, franquia..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">8.5</span> Você pensa em vender a empresa um dia, ou é um negócio para manter e passar adiante?</label>
+        <textarea placeholder="Qual é a intenção de longo prazo com a empresa?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">8.6</span> Qual é a frase que você quer que as pessoas digam sobre a Auto Clean daqui a 5 anos?</label>
+        <textarea placeholder="Como você quer ser lembrado no mercado?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">8.7</span> Se a Auto Clean fosse um lugar físico, como seria esse lugar? (descreva o ambiente, o cheiro, a sensação)</label>
+        <textarea class="tall" placeholder="Use a imaginação — descreva com detalhes sensoriais..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">8.8</span> Existe algo que você ainda não falou que acha importante para entender a marca?</label>
+        <textarea class="tall" placeholder="Espaço livre — escreva o que quiser..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 9 -->
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-numero">9</div>
+      <div class="bloco-titulo">Referências Livres</div>
+    </div>
+    <div class="bloco-body">
+      <div class="pergunta">
+        <label><span class="num">9.1</span> Cole aqui links, nomes ou descrições de qualquer marca, visual, foto, paleta ou campanha que você admira — de qualquer setor.</label>
+        <textarea class="tall" placeholder="Pode ser Instagram, site, Pinterest, nome da marca — qualquer referência visual que você goste..."></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">9.2</span> Cole aqui exemplos do que você definitivamente não quer que a Auto Clean pareça.</label>
+        <textarea class="tall" placeholder="Referências negativas — o que você não quer de jeito nenhum?"></textarea>
+      </div>
+      <div class="pergunta">
+        <label><span class="num">9.3</span> Se pudesse escolher uma única palavra para definir como quer que a Auto Clean seja lembrada, qual seria?</label>
+        <textarea placeholder="Uma palavra só. A mais importante de todas."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-wrap">
+    <button class="btn-copiar" onclick="copiarRespostas()">Copiar todas as respostas</button>
+    <div class="aviso-copiado" id="avisoCopiado">Copiado! Cole no WhatsApp ou email para enviar.</div>
+  </div>
+
+</div>
+
+<footer>
+  Auto Clean — Brand Brief · Confidencial · 2026
+</footer>
+
+<script>
+  const textareas = document.querySelectorAll('textarea');
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const total = textareas.length;
+
+  function atualizarProgresso() {
+    let respondidas = 0;
+    textareas.forEach(t => { if (t.value.trim().length > 0) respondidas++; });
+    const pct = Math.round((respondidas / total) * 100);
+    progressBar.style.width = pct + '%';
+    progressText.textContent = respondidas + ' / ' + total + ' respondidas';
+  }
+
+  textareas.forEach(t => t.addEventListener('input', atualizarProgresso));
+
+  function copiarRespostas() {
+    const labels = document.querySelectorAll('.pergunta label');
+    let texto = 'AUTO CLEAN — BRAND BRIEF\n';
+    texto += '========================\n\n';
+
+    let blocoAtual = '';
+    document.querySelectorAll('.bloco').forEach(bloco => {
+      const titulo = bloco.querySelector('.bloco-titulo').textContent;
+      const num = bloco.querySelector('.bloco-numero').textContent;
+      texto += `\nBLOCO ${num} — ${titulo.toUpperCase()}\n`;
+      texto += '─'.repeat(40) + '\n';
+      bloco.querySelectorAll('.pergunta').forEach(p => {
+        const label = p.querySelector('label').textContent.trim();
+        const resposta = p.querySelector('textarea').value.trim();
+        texto += `\n${label}\n`;
+        texto += resposta ? `→ ${resposta}\n` : `→ (não respondido)\n`;
+      });
+    });
+
+    navigator.clipboard.writeText(texto).then(() => {
+      const aviso = document.getElementById('avisoCopiado');
+      aviso.style.display = 'block';
+      setTimeout(() => { aviso.style.display = 'none'; }, 3000);
+    }).catch(() => {
+      alert('Não foi possível copiar automaticamente. Selecione o texto manualmente.');
+    });
+  }
+</script>
+
+</body>
+</html>
