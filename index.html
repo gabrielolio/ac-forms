@@ -6,307 +6,126 @@
   <title>Auto Clean — Brand Brief</title>
   <meta property="og:title" content="Auto Clean — Brand Brief" />
   <meta property="og:description" content="Questionario de Identidade de Marca para a Auto Clean. Responda com calma — quanto mais detalhe, melhor o resultado." />
-  <meta property="og:image" content="https://placehold.co/1200x630/0a1628/2c7be5?text=Auto+Clean+Brand+Brief" />
+  <meta property="og:image" content="https://placehold.co/1200x630/0D0D0D/C8F135?text=Auto+Clean+Brand+Brief" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
   <style>
+    /* ── RESET ── */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    /* ── BASE ── */
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f0f4f8;
-      color: #1a1a2e;
+      font-family: 'DM Sans', Arial, sans-serif;
+      background: #0D0D0D;
+      color: #F2F2F2;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
+
+    /* ── PROGRESS BAR — linha fina no topo ── */
+    .barra-progresso-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #0D0D0D;
+      border-bottom: 1px solid #161616;
+    }
+
+    .barra-progresso-linha {
+      height: 3px;
+      background: #1A1A1A;
+      overflow: hidden;
+    }
+
+    .barra-progresso-fill {
+      height: 100%;
+      background: #C8F135;
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+
+    .progresso-texto {
+      padding: 6px 20px;
+      color: #8A8A8A;
+      font-size: 11px;
+      font-family: 'DM Sans', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 500;
+    }
+
+    /* ── BRIEF COMPLETO BANNER ── */
+    .brief-completo {
+      display: none;
+      background: #C8F135;
+      color: #0D0D0D;
+      text-align: center;
+      padding: 14px 20px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brief-completo.visivel { display: block; }
 
     /* ── HEADER ── */
     header {
-      background: linear-gradient(135deg, #0a1628 0%, #1a3a6b 100%);
-      color: white;
-      padding: 24px 24px 20px;
+      background: #0D0D0D;
+      padding: 28px 20px 24px;
       text-align: center;
-      border-bottom: 4px solid #2c7be5;
     }
 
     header .logo-text {
-      font-size: 2.2rem;
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
       font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
+      color: #FFFFFF;
     }
 
-    header .logo-text span { color: #2c7be5; }
+    header .logo-text span { color: #C8F135; }
 
-    header p {
+    header .logo-sub {
       margin-top: 6px;
-      font-size: 1rem;
-      color: #c8d8ee;
+      font-size: 0.9rem;
+      color: #8A8A8A;
       font-weight: 400;
     }
 
     header .instrucao {
-      margin-top: 14px;
-      background: rgba(44, 123, 229, 0.15);
-      border: 1px solid rgba(44, 123, 229, 0.4);
+      margin-top: 16px;
+      background: #161616;
+      border: 1px solid #2A2A2A;
       border-radius: 8px;
       padding: 12px 20px;
-      font-size: 0.9rem;
-      color: #c8d8ee;
+      font-size: 0.88rem;
+      color: #8A8A8A;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
       line-height: 1.6;
     }
 
-    /* ── PROGRESS BAR ── */
-    .barra-progresso-wrap {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #0a1628;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .barra-progresso-bg {
-      flex: 1;
-      height: 6px;
-      background: #1a3a6b;
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .barra-progresso-fill {
-      height: 100%;
-      background: #2c7be5;
-      border-radius: 3px;
-      transition: width 0.3s ease;
-      width: 0%;
-    }
-
-    .progresso-texto {
-      color: #c8d8ee;
-      font-size: 0.82rem;
-      white-space: nowrap;
-    }
-
-    /* ── BRIEF COMPLETO BANNER ── */
-    .brief-completo {
-      display: none;
-      background: linear-gradient(135deg, #0d7a3e, #1aab57);
-      color: white;
-      text-align: center;
-      padding: 14px 20px;
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.3px;
-    }
-
-    .brief-completo.visivel { display: block; }
-
-    /* ── INDICE ── */
-    .indice {
-      background: white;
-      border-radius: 12px;
-      margin-bottom: 32px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-      padding: 20px 28px;
-    }
-
-    .indice h2 {
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #5a7a9a;
-      margin-bottom: 12px;
-    }
-
-    .indice ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 16px;
-    }
-
-    .indice ul li a {
-      color: #2c7be5;
-      font-size: 0.88rem;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .indice ul li a:hover { text-decoration: underline; }
-
-    /* ── CONTAINER ── */
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px 60px;
-    }
-
-    /* ── BLOCOS ── */
-    .bloco {
-      background: white;
-      border-radius: 12px;
-      margin-bottom: 32px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-      overflow: hidden;
-    }
-
-    .bloco-header {
-      background: linear-gradient(90deg, #0a1628, #1a3a6b);
-      color: white;
-      padding: 18px 28px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .bloco-numero {
-      background: #2c7be5;
-      color: white;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.95rem;
-      flex-shrink: 0;
-      transition: background 0.3s;
-    }
-
-    .bloco-numero.completo {
-      background: #1aab57;
-    }
-
-    .bloco-numero.completo::after {
-      content: ' ✓';
-      font-size: 0.8rem;
-    }
-
-    .bloco-titulo {
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .bloco-body { padding: 24px 28px; }
-
-    /* ── PERGUNTAS ── */
-    .pergunta { margin-bottom: 28px; }
-    .pergunta:last-child { margin-bottom: 0; }
-
-    .pergunta label {
-      display: block;
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: #1a1a2e;
-      margin-bottom: 8px;
-      line-height: 1.5;
-    }
-
-    .pergunta label .num {
-      color: #2c7be5;
-      margin-right: 4px;
-    }
-
-    .pergunta textarea {
-      width: 100%;
-      border: 1.5px solid #d0dce8;
-      border-radius: 8px;
-      padding: 12px 14px;
-      font-family: inherit;
-      font-size: 0.92rem;
-      color: #1a1a2e;
-      background: #f8fafc;
-      resize: vertical;
-      min-height: 80px;
-      overflow: hidden;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      line-height: 1.5;
-    }
-
-    .pergunta textarea:focus {
-      outline: none;
-      border-color: #2c7be5;
-      box-shadow: 0 0 0 3px rgba(44, 123, 229, 0.12);
-      background: white;
-    }
-
-    .pergunta textarea.tall { min-height: 120px; }
-
-    /* ── BOTOES ── */
-    .btn-wrap {
-      text-align: center;
-      margin-top: 40px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      justify-content: center;
-    }
-
-    .btn-copiar, .btn-whatsapp {
-      color: white;
-      border: none;
-      padding: 16px 36px;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      letter-spacing: 0.5px;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-
-    .btn-copiar {
-      background: linear-gradient(135deg, #2c7be5, #1a5cbc);
-      box-shadow: 0 4px 14px rgba(44, 123, 229, 0.3);
-    }
-
-    .btn-copiar:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(44, 123, 229, 0.4);
-    }
-
-    .btn-whatsapp {
-      background: linear-gradient(135deg, #25d366, #1aab57);
-      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
-    }
-
-    .btn-whatsapp:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-    }
-
-    .btn-copiar:active, .btn-whatsapp:active { transform: translateY(0); }
-
-    /* ── AVISOS ── */
-    .aviso-copiado {
-      display: none;
-      margin-top: 12px;
-      color: #1aab57;
-      font-size: 0.9rem;
-      font-weight: 600;
-      width: 100%;
-      text-align: center;
-    }
-
-    /* ── RASCUNHO ── */
+    /* ── RASCUNHO BARRA ── */
     .rascunho-barra {
       display: flex;
       align-items: center;
       justify-content: flex-end;
       gap: 12px;
-      max-width: 800px;
-      margin: 12px auto 0;
-      padding: 0 20px;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 10px 20px 0;
     }
 
     .rascunho-status {
-      font-size: 0.8rem;
-      color: #5a7a9a;
+      font-size: 11px;
+      color: #3ECFAA;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
       opacity: 0;
       transition: opacity 0.4s;
     }
@@ -314,36 +133,265 @@
     .rascunho-status.visivel { opacity: 1; }
 
     .btn-limpar-rascunho {
-      font-size: 0.78rem;
-      color: #e05c5c;
+      font-size: 12px;
+      color: #4A4A4A;
       background: none;
-      border: 1px solid #e05c5c;
-      border-radius: 6px;
-      padding: 4px 10px;
+      border: none;
       cursor: pointer;
-      transition: background 0.15s, color 0.15s;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      transition: color 0.15s;
+      padding: 0;
     }
 
-    .btn-limpar-rascunho:hover {
-      background: #e05c5c;
-      color: white;
+    .btn-limpar-rascunho:hover { color: #8A8A8A; }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: 720px;
+      margin: 32px auto;
+      padding: 0 20px 80px;
+    }
+
+    /* ── INDICE ── */
+    .indice {
+      background: #161616;
+      border-radius: 8px;
+      margin-bottom: 48px;
+      padding: 16px 20px;
+      border: 1px solid #2A2A2A;
+    }
+
+    .indice h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #4A4A4A;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .indice ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 4px;
+    }
+
+    .indice ul li {
+      display: flex;
+      align-items: center;
+    }
+
+    .indice ul li + li::before {
+      content: '·';
+      color: #2A2A2A;
+      margin-right: 4px;
+      font-size: 1rem;
+    }
+
+    .indice ul li a {
+      color: #8A8A8A;
+      font-size: 13px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      text-decoration: none;
+      transition: color 0.12s;
+    }
+
+    .indice ul li a:hover { color: #C8F135; }
+
+    /* ── BLOCOS ── */
+    .bloco {
+      background: #161616;
+      border-radius: 12px;
+      margin-bottom: 48px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+      overflow: hidden;
+      border: 1px solid #2A2A2A;
+    }
+
+    .bloco-header {
+      background: #1A1A1A;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .bloco-numero {
+      background: #2A2A2A;
+      color: #F2F2F2;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      border: 2px solid transparent;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .bloco-numero.ativo {
+      border-color: #C8F135;
+    }
+
+    .bloco-numero.completo {
+      background: #3ECFAA;
+      border-color: #3ECFAA;
+      color: #0D0D0D;
+    }
+
+    .bloco-numero.completo::after {
+      content: ' \2713';
+      font-size: 0.75rem;
+    }
+
+    .bloco-titulo {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #F2F2F2;
+      letter-spacing: 0;
+    }
+
+    .bloco-body { padding: 24px 24px; }
+
+    /* ── PERGUNTAS ── */
+    .pergunta { margin-bottom: 32px; }
+    .pergunta:last-child { margin-bottom: 0; }
+
+    .pergunta label {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #8A8A8A;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .pergunta label .num {
+      color: #C8F135;
+      margin-right: 4px;
+      font-weight: 700;
+    }
+
+    .pergunta textarea {
+      width: 100%;
+      background: #1F1F1F;
+      border: 1px solid #2A2A2A;
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      color: #F2F2F2;
+      resize: none;
+      min-height: 52px;
+      overflow: hidden;
+      transition: border-color 120ms ease, box-shadow 120ms ease;
+      line-height: 1.5;
+    }
+
+    .pergunta textarea:focus {
+      outline: none;
+      border-color: #C8F135;
+      box-shadow: 0 0 0 3px rgba(200, 241, 53, 0.12);
+    }
+
+    .pergunta textarea::placeholder {
+      color: #4A4A4A;
+    }
+
+    .pergunta textarea.tall { min-height: 100px; }
+
+    /* ── BOTOES ── */
+    .btn-wrap {
+      text-align: center;
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-whatsapp {
+      background: #C8F135;
+      color: #0D0D0D;
+      border: none;
+      padding: 16px 40px;
+      border-radius: 100px;
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      transition: background 0.15s, transform 0.15s;
+    }
+
+    .btn-whatsapp:hover {
+      background: #B0D820;
+      transform: translateY(-1px);
+    }
+
+    .btn-whatsapp:active { transform: translateY(0); }
+
+    .btn-copiar {
+      background: transparent;
+      color: #8A8A8A;
+      border: 1px solid #2A2A2A;
+      padding: 16px 32px;
+      border-radius: 100px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .btn-copiar:hover {
+      border-color: #C8F135;
+      color: #F2F2F2;
+    }
+
+    .btn-copiar:active { opacity: 0.8; }
+
+    /* ── AVISO COPIADO (inline, mantido do original) ── */
+    .aviso-copiado {
+      display: none;
+      margin-top: 12px;
+      color: #3ECFAA;
+      font-size: 0.88rem;
+      font-weight: 500;
+      width: 100%;
+      text-align: center;
     }
 
     /* ── FOOTER ── */
     footer {
       text-align: center;
-      padding: 24px;
-      color: #5a7a9a;
-      font-size: 0.8rem;
+      padding: 32px 24px;
+      color: #4A4A4A;
+      font-size: 12px;
+      font-family: 'DM Sans', sans-serif;
     }
 
     /* ── MOBILE ── */
     @media (max-width: 600px) {
+      header .logo-text { font-size: 1.5rem; }
+      header .logo-sub { font-size: 0.84rem; }
       .bloco-body { padding: 18px 16px; }
-      header .logo-text { font-size: 1.4rem; }
-      header p { font-size: 0.88rem; }
-      header .instrucao { font-size: 0.84rem; padding: 10px 14px; }
-      .indice { padding: 16px; }
+      .bloco-header { padding: 16px; }
+      .bloco-titulo { font-size: 17px; }
+      .indice { padding: 14px 16px; }
+      .pergunta { margin-bottom: 28px; }
+      .btn-whatsapp, .btn-copiar { width: 100%; }
     }
   </style>
 </head>
@@ -351,7 +399,7 @@
 
 <header>
   <div class="logo-text">Auto <span>Clean</span></div>
-  <p>Questionario de Identidade de Marca — Brand Brief</p>
+  <p class="logo-sub">Questionario de Identidade de Marca — Brand Brief</p>
   <div class="instrucao">
     Responda com calma e honestidade. Nao existe resposta certa ou errada.<br>
     Quanto mais detalhe voce der, melhor o resultado final da marca.
@@ -359,8 +407,7 @@
 </header>
 
 <div class="barra-progresso-wrap">
-  <div
-    class="barra-progresso-bg"
+  <div class="barra-progresso-linha"
     role="progressbar"
     aria-valuemin="0"
     aria-valuemax="100"
@@ -373,7 +420,7 @@
 </div>
 
 <div class="brief-completo" id="briefCompleto">
-  Brief completo! Agora envie pelo WhatsApp.
+  Brief completo! Envie agora pelo WhatsApp.
 </div>
 
 <div class="rascunho-barra">
@@ -825,7 +872,7 @@
   </div>
 
   <div class="btn-wrap">
-    <button class="btn-copiar" id="btnCopiar">Copiar todas as respostas</button>
+    <button class="btn-copiar" id="btnCopiar">Copiar respostas</button>
     <button class="btn-whatsapp" id="btnWhatsapp">Enviar pelo WhatsApp</button>
     <div class="aviso-copiado" id="avisoCopiado"></div>
   </div>
@@ -833,7 +880,7 @@
 </div>
 
 <footer>
-  Auto Clean — Brand Brief &middot; 2026
+  Auto Clean &mdash; Brand Brief &middot; 2026
 </footer>
 
 <script>
@@ -910,7 +957,16 @@
     var pct = Math.round((respondidas / total) * 100);
     progressBar.style.width = pct + '%';
     progressBarWrap.setAttribute('aria-valuenow', pct);
-    progressText.textContent = respondidas + ' / ' + total + ' respondidas';
+
+    var blocoAtual = 0;
+    BLOCOS.forEach(function (bloco, idx) {
+      var algum = bloco.perguntas.some(function (id) {
+        var el = document.getElementById(id);
+        return el && el.value.trim().length > 0;
+      });
+      if (algum) blocoAtual = idx + 1;
+    });
+    progressText.textContent = 'Bloco ' + blocoAtual + ' de ' + BLOCOS.length + ' \u2014 ' + respondidas + ' respondidas';
 
     if (pct >= 100) {
       briefCompleto.classList.add('visivel');
@@ -926,14 +982,26 @@
     BLOCOS.forEach(function (bloco) {
       var numEl = document.getElementById(bloco.numId);
       if (!numEl) return;
+
+      var algum = bloco.perguntas.some(function (id) {
+        var el = document.getElementById(id);
+        return el && el.value.trim().length > 0;
+      });
+
       var todas = bloco.perguntas.every(function (id) {
         var el = document.getElementById(id);
         return el && el.value.trim().length > 0;
       });
+
       if (todas) {
         numEl.classList.add('completo');
+        numEl.classList.remove('ativo');
+      } else if (algum) {
+        numEl.classList.remove('completo');
+        numEl.classList.add('ativo');
       } else {
         numEl.classList.remove('completo');
+        numEl.classList.remove('ativo');
       }
     });
   }
